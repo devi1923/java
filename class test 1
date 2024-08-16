@@ -1,0 +1,106 @@
+class Employee {
+    private int empId;
+    private String name;
+    private double salary;
+
+    public Employee(int empId, String name, double salary) {
+        this.empId = empId;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public void displayDetails() {
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+    }
+}
+public class EmployeeDemo {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee(101, "John Doe", 50000.00);
+        Employee emp2 = new Employee(102, "Jane Smith", 55000.00);
+        Employee emp3 = new Employee(103, "Sam Brown", 60000.00);
+
+        System.out.println("Employee 1 Details:");
+        emp1.displayDetails();
+        System.out.println();
+
+        System.out.println("Employee 2 Details:");
+        emp2.displayDetails();
+        System.out.println();
+
+        System.out.println("Employee 3 Details:");
+        emp3.displayDetails();
+    }
+}
+
+
+2.
+class Rectangle {
+    private double length;
+    private double width;
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+public class RectangleDemo {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle(5.0, 3.0);
+        double area = rect.calculateArea();
+        System.out.println("The area of the rectangle is: " + area);
+    }
+}
+
+
+3.class Account {
+    private int accNo;
+    private String name;
+    private double amount;
+    public Account(int accNo, String name, double amount) {
+        this.accNo = accNo;
+        this.name = name;
+        this.amount = amount;
+    }
+
+    public void deposit(double amount) {
+        this.amount += amount;
+        System.out.println("Deposited: " + amount);
+    }
+
+    public void withdraw(double amount) {
+        if (amount > this.amount) {
+            System.out.println("Insufficient balance.");
+        } else {
+            this.amount -= amount;
+            System.out.println("Withdrew: " + amount);
+        }
+    }
+
+    public void displayAccount() {
+        System.out.println("Account Number: " + accNo);
+        System.out.println("Account Holder: " + name);
+        System.out.println("Current Balance: " + amount);
+    }
+}
+
+public class BankingSystem {
+    public static void main(String[] args) {
+        Account acc = new Account(12345, "Alice Johnson", 1000.00);
+
+        acc.displayAccount();
+        System.out.println();
+
+        acc.deposit(500.00);
+        acc.withdraw(200.00);
+        acc.withdraw(1500.00); // Attempt to withdraw more than the balance
+
+        System.out.println();
+        acc.displayAccount();
+    }
+}
