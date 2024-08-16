@@ -1,0 +1,238 @@
+1.class Employee {
+    public void work() {
+        System.out.println("Employee is working.");
+    }
+    public double getSalary() {
+        return 50000; // Default salary
+    }
+}
+class HRManager extends Employee {
+    @Override
+    public void work() {
+        System.out.println("HR Manager is managing human resources.");
+    }
+    public void addEmployee() {
+        System.out.println("Adding a new employee.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        HRManager hrManager = new HRManager();
+
+        emp.work();
+        System.out.println("Employee Salary: Rs." + emp.getSalary());
+
+        hrManager.work();
+        hrManager.addEmployee();
+        System.out.println("HR Manager Salary: Rs." + hrManager.getSalary());
+    }
+}
+
+2.class Vehicle {
+    protected String make;
+    protected String model;
+    protected int year;
+    protected String fuelType;
+
+    public Vehicle(String make, String model, int year, String fuelType) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.fuelType = fuelType;
+    }
+    public double calculateFuelEfficiency(double distance, double fuelUsed) {
+        return distance / fuelUsed;
+    }
+    public double calculateDistanceTraveled(double fuelEfficiency, double fuelUsed) {
+        return fuelEfficiency * fuelUsed;
+    }
+    public double calculateMaxSpeed() {
+        return 0.0; // Default implementation, to be overridden
+    }
+}
+class Truck extends Vehicle {
+    public Truck(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+    @Override
+    public double calculateMaxSpeed() {
+        return 80.0; // Example max speed for a truck
+    }
+}
+class Car extends Vehicle {
+    public Car(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+
+    @Override
+    public double calculateMaxSpeed() {
+        return 180.0; // Example max speed for a car
+    }
+}
+class Motorcycle extends Vehicle {
+    public Motorcycle(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+    @Override
+    public double calculateMaxSpeed() {
+        return 200.0; // Example max speed for a motorcycle
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Vehicle truck = new Truck("Volvo", "FH16", 2023, "Diesel");
+        Vehicle car = new Car("Toyota", "Camry", 2023, "Petrol");
+        Vehicle motorcycle = new Motorcycle("Harley-Davidson", "Iron 883", 2023, "Petrol");
+
+        System.out.println("Truck Max Speed: " + truck.calculateMaxSpeed() + " km/h");
+        System.out.println("Car Max Speed: " + car.calculateMaxSpeed() + " km/h");
+        System.out.println("Motorcycle Max Speed: " + motorcycle.calculateMaxSpeed() + " km/h");
+
+        double fuelEfficiency = car.calculateFuelEfficiency(500, 50); // Example calculation
+        double distance = car.calculateDistanceTraveled(fuelEfficiency, 50); // Example calculation
+
+        System.out.println("Car Fuel Efficiency: " + fuelEfficiency + " km/l");
+        System.out.println("Car Distance Traveled: " + distance + " km");
+    }
+}
+
+
+3.
+class Employee {
+    protected String name;
+    protected String address;
+    protected double salary;
+    protected String jobTitle;
+
+    public Employee(String name, String address, double salary, String jobTitle) {
+        this.name = name;
+        this.address = address;
+        this.salary = salary;
+        this.jobTitle = jobTitle;
+    }
+    public double calculateBonus() {
+        return salary * 0.10; // Default 10% bonus
+    }
+
+    public void generatePerformanceReport() {
+        System.out.println("Generating performance report for " + name);
+    }
+}
+class Manager extends Employee {
+    public Manager(String name, String address, double salary) {
+        super(name, address, salary, "Manager");
+    }
+
+    @Override
+    public void generatePerformanceReport() {
+        System.out.println("Generating detailed performance report for Manager " + name);
+    }
+
+    public void manageProjects() {
+        System.out.println("Managing projects.");
+    }
+}
+class Developer extends Employee {
+    public Developer(String name, String address, double salary) {
+        super(name, address, salary, "Developer");
+    }
+    @Override
+    public double calculateBonus() {
+        return salary * 0.15; // Developer gets a 15% bonus
+    }
+
+    public void workOnProject() {
+        System.out.println("Working on development project.");
+    }
+}
+class Programmer extends Employee {
+    public Programmer(String name, String address, double salary) {
+        super(name, address, salary, "Programmer");
+    }
+
+    @Override
+    public double calculateBonus() {
+        return salary * 0.12; // Programmer gets a 12% bonus
+    }
+
+    public void code() {
+        System.out.println("Writing code.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee manager = new Manager("Alice", "123 Main St", 90000);
+        Employee developer = new Developer("Bob", "456 Elm St", 80000);
+        Employee programmer = new Programmer("Charlie", "789 Oak St", 70000);
+
+        System.out.println("Manager Bonus: Rs." + manager.calculateBonus());
+        manager.generatePerformanceReport();
+        ((Manager) manager).manageProjects();
+
+        System.out.println("Developer Bonus: Rs." + developer.calculateBonus());
+        developer.generatePerformanceReport();
+        ((Developer) developer).workOnProject();
+
+        System.out.println("Programmer Bonus: Rs." + programmer.calculateBonus());
+        programmer.generatePerformanceReport();
+        ((Programmer) programmer).code();
+    }
+}
+
+
+4.
+abstract class Shape {
+    public abstract double calculateArea();
+    public abstract double calculatePerimeter();
+}
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+class Triangle extends Shape {
+    private double side1;
+    private double side2;
+    private double side3;
+
+    public Triangle(double side1, double side2, double side3) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+    @Override
+    public double calculateArea() {
+        double s = (side1 + side2 + side3) / 2;
+        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return side1 + side2 + side3;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle(5.0);
+        Shape triangle = new Triangle(3.0, 4.0, 5.0);
+
+        System.out.println("Circle Area: " + circle.calculateArea());
+        System.out.println("Circle Perimeter: " + circle.calculatePerimeter());
+
+        System.out.println("Triangle Area: " + triangle.calculateArea());
+        System.out.println("Triangle Perimeter: " + triangle.calculatePerimeter());
+    }
+}
