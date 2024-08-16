@@ -1,0 +1,94 @@
+class Employee {
+    private int employee_id;
+    private String employee_name;
+    private double employee_salary;
+
+    public Employee(int employee_id, String employee_name, double employee_salary) {
+        this.employee_id = employee_id;
+        this.employee_name = employee_name;
+        this.employee_salary = employee_salary;
+    }
+
+    public int getEmployeeId() {
+        return employee_id;
+    }
+
+    public void setEmployeeId(int employee_id) {
+        this.employee_id = employee_id;
+    }
+
+    public String getEmployeeName() {
+        return employee_name;
+    }
+
+    public void setEmployeeName(String employee_name) {
+        this.employee_name = employee_name;
+    }
+
+    public String getEmployeeSalary() {
+        return String.format("$%.2f", employee_salary);
+    }
+}
+
+public class EmployeeDemo {
+    public static void main(String[] args) {
+        Employee emp = new Employee(101, "Alice Johnson", 75000.00);
+
+        System.out.println("Employee ID: " + emp.getEmployeeId());
+        System.out.println("Employee Name: " + emp.getEmployeeName());
+        System.out.println("Employee Salary: " + emp.getEmployeeSalary());
+
+        emp.setEmployeeId(102);
+        emp.setEmployeeName("Bob Smith");
+        System.out.println("\nUpdated Employee ID: " + emp.getEmployeeId());
+        System.out.println("Updated Employee Name: " + emp.getEmployeeName());
+    }
+}
+
+
+2.
+class Vehicle {
+    protected int speed;
+
+    public Vehicle() {
+        this.speed = 0;
+    }
+
+    public void speedUp() {
+        System.out.println("Vehicle is speeding up.");
+    }
+    public int getSpeed() {
+        return speed;
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    public void speedUp() {
+        speed += 20; // Increase speed by 20 units for Car
+        System.out.println("Car is speeding up. Current speed: " + speed);
+    }
+}
+
+class Bicycle extends Vehicle {
+    @Override
+    public void speedUp() {
+        speed += 5; // Increase speed by 5 units for Bicycle
+        System.out.println("Bicycle is speeding up. Current speed: " + speed);
+    }
+}
+
+public class VehicleDemo {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        Vehicle myBike = new Bicycle();
+
+        myCar.speedUp();
+        myBike.speedUp();
+      
+        myCar.speedUp();
+        myBike.speedUp();
+    }
+}
+
+
