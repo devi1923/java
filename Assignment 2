@@ -1,0 +1,97 @@
+1.class Bank {
+    public double getRateOfInterest() {
+        return 0.0; // Default rate
+    }
+}
+class SBI extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 8.0; // SBI interest rate
+    }
+}
+class ICICI extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 7.0; // ICICI interest rate
+    }
+}
+class AXIS extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 9.0; // AXIS interest rate
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bank sbi = new SBI();
+        Bank icici = new ICICI();
+        Bank axis = new AXIS();
+
+        System.out.println("SBI Interest Rate: " + sbi.getRateOfInterest() + "%");
+        System.out.println("ICICI Interest Rate: " + icici.getRateOfInterest() + "%");
+        System.out.println("AXIS Interest Rate: " + axis.getRateOfInterest() + "%");
+    }
+}
+
+2.import java.util.Scanner;
+
+class BankAccount {
+    private String depositorName;
+    private String accountNumber;
+    private String accountType;
+    private double balance;
+
+    public BankAccount(String depositorName, String accountNumber, String accountType, double initialBalance) {
+        this.depositorName = depositorName;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        if (initialBalance >= 500) {
+            this.balance = initialBalance;
+        } else {
+            this.balance = 500; // Minimum balance
+        }
+    }
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: Rs." + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+    public void withdraw(double amount) {
+        if (amount > 0 && (balance - amount) >= 500) {
+            balance -= amount;
+            System.out.println("Withdrew: Rs." + amount);
+        } else {
+            System.out.println("Insufficient balance or invalid amount.");
+        }
+    }
+    public void displayBalance() {
+        System.out.println("Current Balance: Rs." + balance);
+    }
+    public void readAccountDetails() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter account number: ");
+        accountNumber = scanner.nextLine();
+        System.out.print("Enter depositor name: ");
+        depositorName = scanner.nextLine();
+        System.out.print("Enter type of account (Savings/Current): ");
+        accountType = scanner.nextLine();
+    }
+
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("John Doe", "123456789", "Savings", 1000);
+
+        account.displayBalance();
+
+        account.deposit(500);
+        account.withdraw(300);
+        account.displayBalance();
+
+        account.readAccountDetails();
+        account.displayBalance();
+    }
+}
+
