@@ -1,0 +1,114 @@
+1.import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReaderExample {
+    public static void readFile(String filePath) throws IOException {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            throw new IOException("File not found or cannot be read.", e);
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
+    }
+    public static void main(String[] args) {
+        try {
+            readFile("example.txt"); // Replace with the path to your file
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+2.
+import java.util.ArrayList;
+import java.util.List;
+
+class Student {
+    private String studentId;
+    private String studentName;
+    private List<Integer> grades;
+
+    public Student(String studentId, String studentName) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.grades = new ArrayList<>();
+    }
+    public String getStudentId() {
+        return studentId;
+    }
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+    public String getStudentName() {
+        return studentName;
+    }
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+    public void addGrade(int grade) {
+        if (grade >= 0 && grade <= 100) {
+            grades.add(grade);
+            System.out.println("Grade added: " + grade);
+        } else {
+            System.out.println("Invalid grade. Must be between 0 and 100.");
+        }
+    }
+    public void displayGrades() {
+        System.out.println("Grades: " + grades);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("S12345", "John Doe");
+        student.addGrade(85);
+        student.addGrade(92);
+        student.addGrade(105); // Invalid grade
+        student.displayGrades();
+    }
+}
+
+3.
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class TextFieldExample extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        TextField textField = new TextField();
+        Button button = new Button("Show Text");
+        Label label = new Label();
+
+        button.setOnAction(e -> {
+            String inputText = textField.getText();
+            label.setText("Entered Text: " + inputText);
+        });
+
+        VBox vbox = new VBox(10, textField, button, label);
+        vbox.setStyle("-fx-padding: 20; -fx-alignment: center;");
+
+        Scene scene = new Scene(vbox, 300, 200);
+        primaryStage.setTitle("TextField Example");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
