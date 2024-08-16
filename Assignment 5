@@ -1,0 +1,95 @@
+1.import java.util.Scanner;
+
+public class SumProductMinMax3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter 1st integer: ");
+        int num1 = scanner.nextInt();
+        System.out.print("Enter 2nd integer: ");
+        int num2 = scanner.nextInt();
+        System.out.print("Enter 3rd integer: ");
+        int num3 = scanner.nextInt();
+
+        int sum = num1 + num2 + num3;
+        int product = num1 * num2 * num3;
+        int min = Math.min(Math.min(num1, num2), num3);
+        int max = Math.max(Math.max(num1, num2), num3);
+
+        System.out.println("The sum is: " + sum);
+        System.out.println("The product is: " + product);
+        System.out.println("The min is: " + min);
+        System.out.println("The max is: " + max);
+    }
+}
+
+
+2.import java.util.Scanner;
+
+public class BMICalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your height in inches: ");
+        float heightInInches = scanner.nextFloat();
+        System.out.print("Enter your weight in pounds: ");
+        float weightInPounds = scanner.nextFloat();
+
+        float heightInMeters = heightInInches * 0.0254f;
+        float weightInKg = weightInPounds * 0.453592f;
+        float bmi = weightInKg / (heightInMeters * heightInMeters);
+
+        String category;
+        if (bmi <= 16.00) {
+            category = "starvation";
+        } else if (bmi <= 16.99) {
+            category = "emaciation";
+        } else if (bmi <= 18.49) {
+            category = "underweight";
+        } else if (bmi <= 22.99) {
+            category = "normal, low range";
+        } else if (bmi <= 24.99) {
+            category = "normal high range";
+        } else if (bmi <= 27.49) {
+            category = "overweight low range";
+        } else if (bmi <= 29.99) {
+            category = "overweight high range";
+        } else if (bmi <= 34.99) {
+            category = "1st degree obesity";
+        } else if (bmi <= 39.99) {
+            category = "2nd degree obesity";
+        } else {
+            category = "3rd degree obesity";
+        }
+
+        System.out.printf("Your BMI is: %.2f%n", bmi);
+        System.out.println("BMI category: " + category);
+    }
+}
+
+3.import java.util.Random;
+
+public class FindLargestSmallest {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int count = 0;
+        int largest = Integer.MIN_VALUE;
+        int smallest = Integer.MAX_VALUE;
+
+        while (count < 10) {
+            int number = random.nextInt(100) + 1; // Random number between 1 and 100
+            System.out.println("Random number: " + number);
+
+            if (number > largest) {
+                largest = number;
+            }
+            if (number < smallest) {
+                smallest = number;
+            }
+
+            count++;
+        }
+        System.out.println("Largest number: " + largest);
+        System.out.println("Smallest number: " + smallest);
+    }
+}
